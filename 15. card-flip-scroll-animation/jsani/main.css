@@ -1,0 +1,180 @@
+.main-content-1 {
+    width: 100%;
+    height: 500vh;
+}
+
+.sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-flow:colum wrap;
+}
+
+.sticky-background {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    font-weight: 700;
+}
+.card-frame-top {
+    position: absolute;
+    width: 95vw;
+    height: 15vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transform-style: preserve-3d;
+    /* 3D 랜더링을 위해   위해 부모요소에 지정 기본 값은 flat */
+    top:100px;
+}
+.card-frame-btm {
+    position: absolute;
+    width: 95vw;
+    height: 15vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transform-style: preserve-3d;
+    /* 3D 랜더링을 위해   위해 부모요소에 지정 기본 값은 flat */
+    bottom:100px;
+}
+.card {
+    width: 24%;
+    height: 100%;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10vw;
+    transform-style: preserve-3d;
+    position: relative;
+    transform: perspective(100vw)
+    /* perspective원근법 */
+    translateX(100vw) 
+    rotateY(180deg);
+    transition: transform 0.1s;
+}
+.front, .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 1vw;
+    overflow: hidden;
+    backface-visibility: hidden;
+    /* 요소에 뒷면에서 앞면이 보이지 않게 하기  */
+    border: 1px solid #eee;
+}
+
+.front {
+    background-color: #FFF;
+    font-size: 0.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+/* top */
+.f1 a{
+    background-image: url(../2023portfolio/project/design/sns7.jpg);
+    display: block;
+    background-size: 60%;
+    background-repeat:no-repeat;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+}
+.f2 a{
+    background-image: url(../2023portfolio/project/design/sns6.jpg);
+    display: block;
+    background-size: 60%;
+    background-repeat:no-repeat;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+}
+.f3 a{
+    background-image: url(../2023portfolio/project/design/sns1.jpg);
+    display: block;
+    background-size: 60%;
+    background-repeat:no-repeat;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+}
+.f4 a{
+    background-image: url(../2023portfolio/project/design/sns4.jpg);
+    display: block;
+    background-size: 60%;
+    background-repeat:no-repeat;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+}
+/* btm */
+.card_btm .f1 a{
+    background-image: url(../2023portfolio/project/design/sns3.jpg);
+    display: block;
+    background-size: 60%;
+    background-repeat:no-repeat;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+}
+.card_btm .f2 a{
+    background-image: url(../2023portfolio/project/design/sns2.jpg);
+    display: block;
+    background-size: 60%;
+    background-repeat:no-repeat;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+}
+.card_btm .f3 a{
+    background-image: url(../2023portfolio/project/design/sns5.jpg);
+    display: block;
+    background-size: 60%;
+    background-repeat:no-repeat;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+}
+.full {
+    position: fixed;
+    left: 0;
+    top:-60px;
+    width: 100%;
+    height: 107%;
+    background-color: rgba(0,0,0,0.8);
+    display: none;
+    z-index:999;
+}
+.full .close {
+    position: fixed;
+    right: 50px;
+    top: 150px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    z-index: 999;
+}
+.full .c {
+    width: 900px;
+    margin: 0 auto;
+    height: 100vh;
+    overflow-y: auto;
+    padding-top: 100px;
+}
+.full .c img { width: 100%; background-color: #fff;}
+.back {
+    transform: rotateY(180deg);
+    background-color: #E0DED7;
+    background-image: repeating-linear-gradient(0deg, #3B3A38, #3B3A38 33.3%, #ffffff00 0px, #ffffff00 67%);
+    background-size: 100%;
+}

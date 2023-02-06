@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div class="main-content-1 m4_snsDesign">
+        <div class="sticky">
+            <h1 class="main_title">
+                <span>let </span>
+                <span>Details Design</span>
+            </h1>
+            <!-- frame_top -->
+            <div class="card-frame-top card_top">
+                <div class="card card1">
+                    <div class="front f1">
+                        <a href="#"class="view"></a>
+                    </div>
+                    <div class="back back_me"></div>
+                </div>
+                <div class="card card2">
+                    <div class="front f2">
+                        <a href="#"class="view"></a>
+                    </div>
+                    <div class="back"></div>
+                </div>
+                <div class="card card3">
+                    <div class="front f3">
+                        <a href="#"class="view"></a>
+                    </div>
+                    <div class="back"></div>
+                </div>
+                <div class="card card4">
+                    <div class="front f4">
+                        <a href="#"class="view"></a>
+                    </div>
+                    <div class="back"></div>
+                </div>
+            </div><!-- e:card-frame -->
+            <div class="full_frame-top full_top">
+                <div class="full full1">
+                    <button type="button" class="close">창 닫기</button>
+                    <div class="c">
+                        <img src="../2023portfolio/project/design/sns7.jpg" alt="">
+                    </div>
+                </div><!-- e:card1 -->
+                <div class="full full2">
+                    <button type="button" class="close">창 닫기</button>
+                    <div class="c">
+                        <img src="../2023portfolio/project/design/sns6.jpg" alt="">
+                    </div>
+                </div><!-- e:card2 -->
+                <div class="full full3">
+                    <button type="button" class="close">창 닫기</button>
+                    <div class="c">
+                        <img src="../2023portfolio/project/design/sns1.jpg" alt="">
+                    </div>
+                </div><!-- e:card3 -->
+                <div class="full full4">
+                    <button type="button" class="close">창 닫기</button>
+                    <div class="c">
+                        <img src="../2023portfolio/project/design/sns4.jpg" alt="">
+                    </div>
+                </div><!-- e:card4 -->
+            </div><!-- e:full_frame -->
+            <!-- frame_btm -->
+            <div class="card-frame-btm card_btm">
+                <div class="card card1">
+                    <div class="front f1">
+                        <a href="#"class="view"></a>
+                    </div>
+                    <div class="back"></div>
+                </div>
+                <div class="card card2">
+                    <div class="front f2">
+                        <a href="#"class="view"></a>
+                    </div>
+                    <div class="back"></div>
+                </div>
+                <div class="card card3">
+                    <div class="front f3">
+                        <a href="#"class="view"></a>
+                    </div>
+                    <div class="back"></div>
+                </div>
+            </div><!-- e:card-frame -->
+            <div class="full_frame-btm full_btm">
+                <div class="full full1">
+                    <button type="button" class="close">창 닫기</button>
+                    <div class="c">
+                        <img src="../2023portfolio/project/design/sns3.jpg" alt="">
+                    </div>
+                </div><!-- e:card1 -->
+                <div class="full full2">
+                    <button type="button" class="close">창 닫기</button>
+                    <div class="c">
+                        <img src="../2023portfolio/project/design/sns2.jpg" alt="">
+                    </div>
+                </div><!-- e:card2 -->
+                <div class="full full3">
+                    <button type="button" class="close">창 닫기</button>
+                    <div class="c">
+                        <img src="../2023portfolio/project/design/sns.jpg" alt="">
+                    </div>
+                </div><!-- e:card3 -->
+            </div><!-- e:full_frame -->
+        </div><!-- e:sticky -->
+    </div>
+    <script>
+        class CardFlipOnScroll {
+        constructor(wrapper, sticky) {
+        this.wrapper = wrapper
+        this.sticky = sticky
+        this.cards = sticky.querySelectorAll('.card')
+        this.length = this.cards.length
+
+        this.start = 0
+        this.end = 0
+        this.step = 0
+        }
+
+        init() {
+        this.start = this.wrapper.offsetTop - 100
+        this.end = this.wrapper.offsetTop + this.wrapper.offsetHeight - innerHeight * 1.2
+        this.step = (this.end - this.start) / (this.length * 2)
+        }
+
+        animate() {
+        this.cards.forEach((card, i) => {
+        const s = this.start + this.step * i
+        const e = s + this.step * (this.length + 1)
+
+        if (scrollY <= s) {
+        card.style.transform = `
+            perspective(100vw)
+            translateX(100vw) 
+            rotateY(180deg)`
+        } else if (scrollY > s && scrollY <= e - this.step) {
+        card.style.transform = `
+            perspective(100vw)
+            translateX(${100 + (scrollY - s) / (e - s) * -100}vw)
+            rotateY(180deg)
+            `
+        } else if (scrollY > e - this.step && scrollY <= e) {
+        card.style.transform = `
+            perspective(100vw)
+            translateX(${100 + (scrollY - s) / (e - s) * -100}vw)
+            rotateY(${180 + -(scrollY - (e - this.step)) / this.step * 180}deg)`
+        } else if (scrollY > e) {
+        card.style.transform = `
+            perspective(100vw)
+            translateX(0vw) 
+            rotateY(0deg)`
+            }
+        })
+    }
+}
+
+const full = document.querySelectorAll('.full_frame .full')
+const card = document.querySelectorAll('.card-frame .card a')
+const mainContent1 = document.querySelector('.main-content-1')
+const sticky = document.querySelector('.sticky')
+const cardFlipOnScroll = new CardFlipOnScroll(mainContent1, sticky)
+console.log(full, card)
+cardFlipOnScroll.init()
+
+window.addEventListener('scroll', () => {
+cardFlipOnScroll.animate()
+})
+
+window.addEventListener('resize', () => {
+cardFlipOnScroll.init()
+})
+
+let product = document.querySelectorAll('.front .view')//클릭시 풀페이지 보기
+    let product_full= document.querySelectorAll('.full_frame .full')//클릭시 보여지는 페이지
+    let product_full_x = document.querySelectorAll('.full_frame .full .close')// 창닫기
+    console.log(product, product_full,product_full_x) 
+    
+    //초기 sns_fill모두 숨기기
+    for(let s of product_full){
+        s.style.display="none"
+        s.style.opacity="0"
+    }
+    //sns_a 개별 클릭시 관련한 product_full 출력되기
+    product.forEach(function(t, i){
+        t.addEventListener('click',function(e){
+        e.preventDefault()
+        product_full[i].style.display='block'
+        product_full[i].style.opacity='1'
+        })
+    })
+    //창닫기 클릭시 product_full 숨기기 
+    product_full_x.forEach(function(t,i){
+        t.addEventListener('click',function(e){
+            e.preventDefault()
+            product_full[i].style.display='none'
+            product_full[i].style.opacity='0'
+        })
+    })
+
+    /* top */
+    const pro_top = document.querySelectorAll('.card_top .card a')
+    const full_top = document.querySelectorAll('.full_top .full')
+    const close_top = document.querySelectorAll('.full_top .close')
+
+    pro_top.forEach(function(t, i){
+        t.addEventListener('click',function(e){
+            e.preventDefault()
+            full_top[i].style.display='block'
+            full_top[i].style.opacity='1'
+        })
+    })
+    close_top.forEach(function(t,i){
+        t.addEventListener('click',function(){
+            t.parentNode.style.display = 'none'
+        })
+    })
+
+    /* btm */
+    const pro_btm = document.querySelectorAll('.card_btm .card a')
+    const full_btm = document.querySelectorAll('.full_btm .full')
+    const close_btm = document.querySelectorAll('.full_btm .close')
+
+    pro_btm.forEach(function(t, i){
+        t.addEventListener('click',function(e){
+            e.preventDefault()
+            full_btm[i].style.display='block'
+            full_btm[i].style.opacity='1'
+        })
+    })
+    close_btm.forEach(function(t,i){
+        t.addEventListener('click',function(){
+            t.parentNode.style.display = 'none'
+        })
+    })
+</script>
+</body>
+</html>
